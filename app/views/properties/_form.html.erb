@@ -1,7 +1,7 @@
-<div>
+<div class="main">
   <%= form_with(model: @property, local: true) do |f| %>
   <%= f.label :name, '物件名' %><br>
-  <%= f.text_field :name%><br>
+  <%= f.text_field :name %><br>
   <%= f.label :rent, '賃料' %><br>
   <%= f.text_field :rent %>円
   <br>
@@ -24,7 +24,7 @@
     <%= nearest_station.text_field :walking_minutes %>分<br><br>
   <% end %>
 
-  <%= f.submit %>
+  <%= f.submit '登録する' %>
 <% end %>
 
 <br>

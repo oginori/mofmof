@@ -19,7 +19,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
-    @nearest_station = @property.nearest_stations
+    @nearest_stations = @property.nearest_stations
   end
 
   def edit
@@ -34,19 +34,25 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def destroy
+    @property.destroy
+    redirect_to properties_path, notice: '物件を削除しました！'
+  end
+
   private
 
   def property_params
     params.require(:property).permit(
-      :property_name,
-      :rent, :address,
+      :name,
+      :rent,
+      :address,
       :age_of_building,
       :remarks,
       nearest_stations_attributes: [
+        :id,
         :line_name,
         :station_name,
         :walking_minutes,
-        :property_id,
     ],
   )
   end
